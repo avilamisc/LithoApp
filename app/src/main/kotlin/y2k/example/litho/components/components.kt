@@ -12,6 +12,9 @@ import com.facebook.yoga.YogaAlign
 import com.facebook.yoga.YogaEdge
 import com.facebook.yoga.YogaJustify
 import com.facebook.yoga.YogaPositionType
+import y2k.litho.elmish.childWithLayout
+import y2k.litho.elmish.column
+import y2k.litho.elmish.progressL
 
 /**
  * Created by y2k on 11/07/2017.
@@ -36,6 +39,7 @@ class PlaceholderComponentSpec {
     }
 }
 
+@Deprecated("")
 fun ComponentContext.errorIndicator(): ComponentLayout.ContainerBuilder =
     Column.create(this)
         .backgroundColor(0xFF303030L.toInt())
@@ -46,6 +50,21 @@ fun ComponentContext.errorIndicator(): ComponentLayout.ContainerBuilder =
             .text("ERROR")
             .withLayout().alignSelf(YogaAlign.FLEX_END))
 
+fun errorIndicator() =
+    column {
+        backgroundColor(0xFF303030L.toInt())
+        paddingDip(YogaEdge.ALL, 4)
+
+        childWithLayout(textL {
+            textSizeSp(24f)
+            textColor(Color.WHITE)
+            text("ERROR")
+        }, {
+            alignSelf(YogaAlign.CENTER)
+        })
+    }
+
+@Deprecated("")
 fun ComponentContext.preloadIndicator(): ComponentLayout.Builder =
     Progress.create(this)
         .color(Color.GRAY)
@@ -53,3 +72,14 @@ fun ComponentContext.preloadIndicator(): ComponentLayout.Builder =
         .positionType(YogaPositionType.ABSOLUTE)
         .alignSelf(YogaAlign.CENTER)
         .widthDip(50).heightDip(50)
+
+fun viewProgress() =
+    progressL { layout ->
+        color(Color.GRAY)
+        layout {
+            widthDip(50)
+            heightDip(50)
+            positionType(YogaPositionType.ABSOLUTE)
+            alignSelf(YogaAlign.CENTER)
+        }
+    }

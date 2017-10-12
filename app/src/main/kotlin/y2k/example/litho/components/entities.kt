@@ -13,10 +13,9 @@ import com.facebook.yoga.YogaEdge
 import y2k.example.litho.*
 import y2k.example.litho.R
 import y2k.example.litho.Status.*
-import y2k.example.litho.common.Cmd
-import y2k.example.litho.common.Elmish
 import y2k.example.litho.common.applyDiff
 import y2k.example.litho.components.RssScreen.Msg.*
+import y2k.litho.elmish.Cmd
 import java.net.URL
 import y2k.example.litho.Loader as L
 
@@ -88,11 +87,12 @@ class RssListComponentSpec {
         @OnCreateInitialState
         @JvmStatic
         fun onCreateInitialState(c: ComponentContext, state: StateValue<RssScreen.Model>, @Prop subscription: Subscription) {
-            val screen = RssScreen(c)
-            state.set(screen.init(subscription.url).first)
-            Elmish.handle(
-                { screen.init(subscription.url) }, screen::update,
-                { RssListComponent.updateState(c, it) })
+//            val screen = RssScreen(c)
+//            state.set(screen.init(subscription.url).first)
+//            Elmish.handle(
+//                { screen.init(subscription.url) }, screen::update,
+//                { RssListComponent.updateState(c, it) })
+            TODO()
         }
 
         @OnCreateLayout
