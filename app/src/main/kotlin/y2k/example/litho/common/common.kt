@@ -6,8 +6,6 @@ import android.content.Intent
 import android.os.AsyncTask
 import android.support.v7.util.DiffUtil
 import com.facebook.litho.Component
-import com.facebook.litho.ComponentContext
-import com.facebook.litho.ComponentLayout
 import com.facebook.litho.widget.ComponentRenderInfo
 import com.facebook.litho.widget.RecyclerBinder
 import com.facebook.litho.widget.RecyclerBinderUpdateCallback
@@ -18,9 +16,6 @@ import java.io.Serializable
 /**
  * Created by y2k on 07/07/2017.
  **/
-
-typealias LazyComponent = Contextable<ComponentLayout>
-typealias Contextable<T> = (ComponentContext) -> T
 
 fun <T> RecyclerBinder.applyDiff(
     old: List<T>, newItems: List<T>,

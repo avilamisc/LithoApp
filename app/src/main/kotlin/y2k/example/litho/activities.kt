@@ -6,9 +6,9 @@ import android.os.Bundle
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.litho.ComponentContext
 import com.facebook.litho.LithoView
-import com.facebook.soloader.SoLoader
-import y2k.example.litho.components.MainPage
 import y2k.example.litho.components.RssListComponent
+import y2k.example.litho.components.SubscriptionsScreen
+import y2k.litho.elmish.program
 
 /**
  * Created by y2k on 07/07/2017.
@@ -18,10 +18,7 @@ class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val context = ComponentContext(this)
-        val component = MainPage.create(context).build()
-        setContentView(LithoView.create(context, component))
+        program(SubscriptionsScreen)
     }
 
     class App : Application() {
@@ -30,7 +27,7 @@ class MainActivity : Activity() {
             super.onCreate()
             _app = this
             Fresco.initialize(this)
-            SoLoader.init(this, false)
+            com.facebook.soloader.SoLoader.init(this, false)
         }
 
         companion object {
